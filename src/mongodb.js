@@ -34,4 +34,4 @@ const collectionLog = new mongoose.model("Collection1", logInSchema)
 
 const collectionAdd = new mongoose.model("Collection2", AddressSchema)
 
-module.exports=collectionLog, AddressSchema
+module.exports=collectionLog, collectionAdd

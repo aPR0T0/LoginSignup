@@ -1,21 +1,19 @@
 const express = require("express")
 const app = express()
 const path = require("path")
-const hbs = require("hbs")
 const collectionLog = require("./mongodb")
 const collectionAdd = require("./mongodb")
 const templatePath =  path.join(__dirname, '../templates')
 
 app.use(express.json())
-app.set("view engine", "hbs")
 app.set("views", templatePath)
 
 app.get("/", (req,res)=>{
-    res.render("login");        
+    res.sendFile(templatePath + "/login.html");   
 })
 
 app.get("/signup", (req,res)=>{
-    res.render("signup");
+    res.sendFile(templatePath + "/signup.html");  
 })
 app.post("/login",async (req, res)=>{
     const data ={
@@ -23,7 +21,7 @@ app.post("/login",async (req, res)=>{
         password:req.body.password
     }
     await collectionLog.insertMany([data]) // Waits as async is defined
-    res.render("home")
+    res.sendFile(templatePath + "/home.html");  
     
     } ) 
 
@@ -34,7 +32,7 @@ const data ={
     password:req.body.password
 }
 await collectionLog.insertMany([data])
-res.render("home")
+res.sendFile(templatePath + "/home.html");  
 
 } ) // Should be same as your action defined in the login form's heading
 
@@ -44,7 +42,7 @@ app.post("/home", async( req, res)=>{
         password:req.body.password
     }
     await collectionAdd.insertMany([data])
-    res.render("signup")
+    res.sendFile(templatePath + "/signup.html");  
 })
 
 app.listen(3000,()=> {
