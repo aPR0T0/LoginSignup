@@ -1,8 +1,7 @@
 const express = require("express")
 const app = express()
 const path = require("path")
-const collectionLog = require("./mongodb")
-const collectionAdd = require("./mongodb")
+const {users, address} = require("./mongodb")
 const templatePath =  path.join(__dirname, '../templates')
 
 app.use(express.json())
@@ -20,7 +19,7 @@ app.post("/login",async (req, res)=>{
         name:req.body.name,
         password:req.body.password
     }
-    await collectionLog.insertMany([data]) // Waits as async is defined
+    await users.insertMany([data]) // Waits as async is defined
     res.sendFile(templatePath + "/home.html");  
     
     } ) 
@@ -31,7 +30,7 @@ const data ={
     name:req.body.name,
     password:req.body.password
 }
-await collectionLog.insertMany([data])
+await users.insertMany([data])
 res.sendFile(templatePath + "/home.html");  
 
 } ) // Should be same as your action defined in the login form's heading
@@ -41,7 +40,7 @@ app.post("/home", async( req, res)=>{
         email:req.body.email,
         password:req.body.password
     }
-    await collectionAdd.insertMany([data])
+    await address.insertMany([data])
     res.sendFile(templatePath + "/signup.html");  
 })
 

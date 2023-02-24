@@ -30,8 +30,7 @@ const AddressSchema = new mongoose.Schema({
     }
 })
 
-const collectionLog = new mongoose.model("Collection1", logInSchema)
+const users = mongoose.model('User', logInSchema, 'users');
+const address = mongoose.model('Address', AddressSchema, 'address');
 
-const collectionAdd = new mongoose.model("Collection2", AddressSchema)
-
-module.exports=collectionLog, collectionAdd
+module.exports={users, address}
