@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
-
-mongoose.connect("mongodb://localhost:27017/WebDev")
+mongoose.set("strictQuery", false);
+mongoose.connect("mongodb+srv://alqama:proto@cluster0.6njtdw3.mongodb.net/test")
 .then(()=>{
     console.log("Mongo connected");
 })
