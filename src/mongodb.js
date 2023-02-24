@@ -19,6 +19,19 @@ const logInSchema = new mongoose.Schema({
     }
 })
 
-const collection = new mongoose.model("Collection1", logInSchema)
+const AddressSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        require:true
+    },
+    password: {
+        type:String,
+        require:true
+    }
+})
 
-module.exports=collection
+const collectionLog = new mongoose.model("Collection1", logInSchema)
+
+const collectionAdd = new mongoose.model("Collection2", AddressSchema)
+
+module.exports=collectionLog, AddressSchema

@@ -2,7 +2,8 @@ const express = require("express")
 const app = express()
 const path = require("path")
 const hbs = require("hbs")
-const collection = require("./mongodb")
+const collectionLog = require("./mongodb")
+const collectionAdd = require("./mongodb")
 const templatePath =  path.join(__dirname, '../templates')
 
 app.use(express.json())
@@ -21,7 +22,7 @@ app.post("/login",async (req, res)=>{
         name:req.body.name,
         password:req.body.password
     }
-    await collection.insertMany([data]) // Waits as async is defined
+    await collectionLog.insertMany([data]) // Waits as async is defined
     res.render("home")
     
     } ) 
@@ -32,10 +33,19 @@ const data ={
     name:req.body.name,
     password:req.body.password
 }
-await collection.insertMany([data])
+await collectionLog.insertMany([data])
 res.render("home")
 
 } ) // Should be same as your action defined in the login form's heading
+
+app.post("/home", async( req, res)=>{
+    const data={
+        email:req.body.email,
+        password:req.body.password
+    }
+    await collectionAdd.insertMany([data])
+    res.render("signup")
+})
 
 app.listen(3000,()=> {
     console.log("port connected");
