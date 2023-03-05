@@ -27,7 +27,7 @@ app.get("/pricing", (req,res)=>{
 // Post requests help the server to get the information from the user
 app.post("/login",async (req, res)=>{
     const data ={
-        name:req.body.name,
+        name:req.body.email,
         password:req.body.password
     }
     await users.insertMany([data]) // Waits as async is defined
@@ -38,7 +38,7 @@ app.post("/login",async (req, res)=>{
 //res = response which is just a variable we expect from the form nothing else
 app.post("/signup", async (req, res)=>{
 const data ={
-    name:req.body.name,
+    name:req.body.email,
     password:req.body.password
 }
 await users.insertMany([data])
