@@ -8,12 +8,17 @@ app.use(express.json())
 app.set("views", templatePath)
 
 app.get("/", (req,res)=>{
-    res.sendFile(templatePath + "/login.html");   
+    res.sendFile(templatePath + "/home.html");   
 })
 
 app.get("/signup", (req,res)=>{
     res.sendFile(templatePath + "/signup.html");  
 })
+
+app.get("/login", (req,res)=>{
+    res.sendFile(templatePath + "/login.html");  
+})
+
 app.post("/login",async (req, res)=>{
     const data ={
         name:req.body.name,
