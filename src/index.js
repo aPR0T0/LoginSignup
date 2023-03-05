@@ -7,6 +7,7 @@ const templatePath =  path.join(__dirname, '../templates')
 app.use(express.json())
 app.set("views", templatePath)
 
+// Get requests help the user to get the specific links when requested
 app.get("/", (req,res)=>{
     res.sendFile(templatePath + "/home.html");   
 })
@@ -19,6 +20,7 @@ app.get("/login", (req,res)=>{
     res.sendFile(templatePath + "/login.html");  
 })
 
+// Post requests help the server to get the information from the user
 app.post("/login",async (req, res)=>{
     const data ={
         name:req.body.name,
