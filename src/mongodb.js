@@ -29,8 +29,19 @@ const AddressSchema = new mongoose.Schema({
         require:true
     }
 })
+const SubscriptionSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        require:true
+    },
+    password: {
+        type:String,
+        require:true
+    }
+})
 
 const users = mongoose.model('User', logInSchema, 'users');
 const address = mongoose.model('Address', AddressSchema, 'address');
+const Sub = mongoose.model('SubS', SubscriptionSchema, 'SubS');
 
-module.exports={users, address}
+module.exports={users, address, Sub}
