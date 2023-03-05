@@ -20,6 +20,10 @@ app.get("/login", (req,res)=>{
     res.sendFile(templatePath + "/login.html");  
 })
 
+app.get("/pricing", (req,res)=>{
+    res.sendFile(templatePath + "/pricing.html");  
+})
+
 // Post requests help the server to get the information from the user
 app.post("/login",async (req, res)=>{
     const data ={
