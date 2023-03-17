@@ -9,7 +9,7 @@ app.set("views", templatePath)
 
 // Get requests help the user to get the specific links when requested
 app.get("/", (req,res)=>{
-    res.sendFile(templatePath + "/home.html");   
+    res.sendFile(templatePath + "/react_tut.html");   
 })
 
 app.get("/signup", (req,res)=>{

@@ -4,6 +4,8 @@
         "express-handlebars": "^6.0.7",
         "html": "1.0.0",
         "mongoose": "^6.9.0",
-        "nodemon": "^2.0.21"
+        "nodemon": "^2.0.21",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     }
 }
